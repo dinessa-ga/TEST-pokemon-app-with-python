@@ -7,16 +7,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" crossorigin="anonymous"/>
-    <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}" crossorigin="anonymous"/>
+    <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}"> {% endcomment %}
     <title>Pokedex | Django</title>
 </head>
 <body>
     <h2>Using Django Framework</h5> 
     <!-- Inserting the main image -->
-    <img src="{% static 'img/pokedex-image.png' %}" class="image" style="width:100px;">
+    {% comment %} <img src="{% static 'img/pokedex-image.png' %}" class="image" style="width:100px;"> {% endcomment %}
     
-    <form method="post">
+    <form method="get">
         <!-- Cross-site request forgery Protection-->
         {% csrf_token %}
         
@@ -41,7 +41,7 @@
                 Weight: {{weight}}
             </h3>
             <h3>
-                Default sprite: 
+                Default sprites: 
             </h3>
             <img src="{{sprite}}" alt="{{name}} sprite" style="width:70px">
         {% else %}
