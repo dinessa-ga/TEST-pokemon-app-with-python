@@ -5,7 +5,7 @@ def index(request):
     pokemon_list = []
 
     # Fetch a list of Pokémon
-    url_pokeapi = 'https://pokeapi.co/api/v2/pokemon?limit=10'
+    url_pokeapi = 'https://pokeapi.co/api/v2/pokemon?limit=6'
     response = requests.get(url_pokeapi)
 
     if response.status_code == 200:
