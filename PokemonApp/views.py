@@ -1,11 +1,11 @@
 from django.shortcuts import render
 import requests
 
-def index(request):
+def ListaView(request):
     pokemon_list = []
 
     # Fetch a list of Pokémon
-    url_pokeapi = 'https://pokeapi.co/api/v2/pokemon?limit=6'
+    url_pokeapi = 'https://pokeapi.co/api/v2/pokemon?limit=10'
     response = requests.get(url_pokeapi)
 
     if response.status_code == 200:
@@ -23,8 +23,9 @@ def index(request):
 
                 # Extract relevant information
                 pokemon_info = {
-                    'name': pokemon_name.capitalize(),
+                    
                     'sprite': pokemon_data.get('sprites', {}).get('front_default', ''),
+                    'name': pokemon_name.capitalize(),
                     'abilities_count': len(pokemon_data.get('abilities', [])),
                     'url': pokemon_url,
                 }

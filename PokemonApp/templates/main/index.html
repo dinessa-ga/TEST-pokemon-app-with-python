@@ -13,8 +13,9 @@
     <ul>
         {% for pokemon_info in pokemon_list %}
             <li style="list-style-type:none">
+                
+                <img src="{{ pokemon_info.sprite }}" alt="{{ pokemon_info.name }} sprite">
                 <h3>{{ pokemon_info.name }}</h3>
-                <img src="{{ pokemon_info.sprite }}" alt="{{ pokemon_info.name }} sprite" style="width:100px">
                 <p>Número de habilidades: {{ pokemon_info.abilities_count }}</p>
                 <a href="{{ pokemon_info.url }}">Ver más detalles</a>
             </li>
