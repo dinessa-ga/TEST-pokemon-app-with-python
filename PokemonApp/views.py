@@ -1,35 +1,38 @@
 from django.shortcuts import render
-import urllib.request
+import requests
 
-import json
+def index(request):
+    pokemon_list = []
 
-# Create your views here.
+    # Fetch a list of Pokémon
+    url_pokeapi = 'https://pokeapi.co/api/v2/pokemon?limit=10'
+    response = requests.get(url_pokeapi)
 
-def index (request):
-    if request.method == 'POST':
-        pokemon = request.POST['pokemon'].lower()
-        pokemon = pokemon.replace(' ', '%20')
-        url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}/')
-        url_pokeapi.add_header('User-Agent','pikachu')
+    if response.status_code == 200:
+        data = response.json()
 
-        source = urllib.request.urlopen(url_pokeapi).read()
-        list_of_data = json.loads(source)
+        for result in data.get('results', []):
+            pokemon_name = result.get('name', '')
+            pokemon_url = result.get('url', '')
 
-        # Hacer diccionario para que pueda leer json
+            # Fetch details for each Pokémon
+            response_pokemon = requests.get(pokemon_url)
 
-        data = {
-            "number": str(list_of_data['id']),
-            "name": str(list_of_data['name'].capitalize()),
-            "height": str(list_of_data['height']),
-            "weight": str(list_of_data['weight']),
-            "sprite": str(list_of_data['sprites']['front_default']),
-        }
+            if response_pokemon.status_code == 200:
+                pokemon_data = response_pokemon.json()
 
-        print("esto es", data)
-        
-    else:
-        data={}
-        return render(request, 'main/index.html', data)
+                # Extract relevant information
+                pokemon_info = {
+                    'name': pokemon_name.capitalize(),
+                    'sprite': pokemon_data.get('sprites', {}).get('front_default', ''),
+                    'abilities_count': len(pokemon_data.get('abilities', [])),
+                    'url': pokemon_url,
+                }
 
+                pokemon_list.append(pokemon_info)
 
-    
+    context = {
+        'pokemon_list': pokemon_list,
+    }
+
+    return render(request, 'main/index.html', context)

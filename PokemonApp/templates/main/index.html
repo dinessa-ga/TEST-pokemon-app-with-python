@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- The load static is necessary to load images, css and JS -->
-{% load static %}
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}" crossorigin="anonymous"/>
-    <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}"> {% endcomment %}
-    <title>Pokedex | Django</title>
+    <title>Movies Data</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" crossorigin="anonymous"/>
 </head>
 <body>
     <h2>Using Django Framework</h5> 
-    <!-- Inserting the main image -->
-    {% comment %} <img src="{% static 'img/pokedex-image.png' %}" class="image" style="width:100px;"> {% endcomment %}
-    
-    <form method="get">
+
+    <ul>
+        {% for pokemon_info in pokemon_list %}
+            <li>
+                <h3>{{ pokemon_info.name }}</h3>
+                <img src="{{ pokemon_info.sprite }}" alt="{{ pokemon_info.name }} sprite" style="width:70px">
+                <p>Number of Abilities: {{ pokemon_info.abilities_count }}</p>
+                <a href="{{ pokemon_info.url }}">View Details</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post">
         <!-- Cross-site request forgery Protection-->
         {% csrf_token %}
         
@@ -24,33 +29,10 @@
         <input type="text" name="pokemon" placeholder="Search Your Pokemon...">
         <button type="submit">Search</button>
     </form>
+
     <div>
-        <!-- Rendering everything requested to the API -->
-        <!-- First we validate the data requested -->
-        {% if number and name %}
-            <h3>
-                Number: {{number}}
-            </h3>
-            <h3>
-                Name: {{name}}
-            </h3>
-            <h3>
-                Height: {{height}}
-            </h3>
-            <h3>
-                Weight: {{weight}}
-            </h3>
-            <h3>
-                Default sprites: 
-            </h3>
-            <img src="{{sprite}}" alt="{{name}} sprite" style="width:70px">
-        {% else %}
-        <div>
-            <h3>
-                Escribe el nombre o ID de tu pokemon.
-            </h3>
-        </div>
-        {% endif %}
+        <!-- You can add more details or images for each Pokémon if needed -->
     </div>
 </body>
+
 </html>
