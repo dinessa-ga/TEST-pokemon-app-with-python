@@ -50,7 +50,7 @@ class ListaView(View):
 
         # Obtener la lista de Pokémon
         pokemon_api = PokemonAPI()
-        results = pokemon_api.get_pokemon_list(limit=10)
+        results = pokemon_api.get_pokemon_list(limit=20)
 
         for result in results:
             pokemon_name = result.get('name', '')
