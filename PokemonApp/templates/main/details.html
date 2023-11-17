@@ -13,11 +13,29 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>Detalles del Pokémon {{ pokemon_data.name }}</h1>
-        <p>ID: {{ pokemon_data.id }}</p>
-        <p>Abilities: {{ pokemon_data.abilities_count }}</p>
-        <!-- Agrega más detalles según sea necesario -->
-        
+      <div>
+        <!-- main/details.html -->
+        <h1>Detalles del Pokémon {{ pokemon_info.name }}</h1>
+        <p>ID: {{ pokemon_info.id }}</p>
+        <p>Abilities Count: {{ pokemon_info.abilities_count }}</p>
+        <img src="{{ pokemon_info.sprite }}" alt="{{ pokemon_info.name }}">
+        <!-- Agregar más detalles según sea necesario -->
+
+        <h2>Habilidades:</h2>
+        <ul>
+            {% for ability in abilities %}
+                <li>{{ ability.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Características:</h2>
+        <ul>
+            {% for characteristic in characteristics %}
+                <li>{{ characteristic.name }}</li>
+            {% endfor %}
+        </ul>
+
+      </div>
         
         <script src="" async defer></script>
     </body>
