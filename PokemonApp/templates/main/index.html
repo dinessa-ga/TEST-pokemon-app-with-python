@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
 </head>
 <body>
-    <h2>Pokemon</h5> 
+    <div class="image-container">
+        <img class="mini-logo" src="{% static 'img/mini_logo.png' %}" >
+    </div>
         
     <ul>
         {% for pokemon_info in pokemon_list %}
