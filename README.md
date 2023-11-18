@@ -1,6 +1,6 @@
 <h1> Proyecto de Pokemon con python Django </h1>
 
-Este proyecto utiliza Django un framework para Python, y se alimenta de una api externa, PokeApi. Además contiene una carpeta, PokemonApp, dentro en la carpeta templates, se encuentran los html: index.html y details.html. 
+Este proyecto utiliza Django un framework para Python, y se alimenta de una api externa, PokeApi. Además contiene una carpeta, PokemonApp, dentro en la carpeta templates que contiene la carpeta main, se encuentran los html: index.html y details.html. 
 
 La carpeta PokemonApp se compone de los siguientes archivos python principales: 
 - **urls.py:** Se realiza el ruteo de las vistas 
