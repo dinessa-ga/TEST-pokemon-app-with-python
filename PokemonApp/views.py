@@ -44,7 +44,7 @@ from django.shortcuts import render
 from django.views import View
 from .api import PokemonAPI
 
-class ListaView(View):
+class ListView(View):
     def get(self, request):
         pokemon_list = []
 
@@ -80,24 +80,46 @@ class ListaView(View):
 
 
 
-class DetalleView(View):
+# class DetalleView(View):
+#     def get(self, request, item_id):
+#         # Obtener detalles para el Pokémon específico
+#         pokemon_api = PokemonAPI()
+#         pokemon_data = pokemon_api.get_pokemon_details_by_id(item_id)
+
+#         if pokemon_data:
+#             # Obtener más detalles del Pokémon
+#             abilities = pokemon_data.get('abilities', [])
+           
+
+#             context = {
+#                  'sprite': pokemon_data.get('sprites', {}).get('front_default', ''),
+#                 'pokemon_data': pokemon_data,
+#                 'ability': abilities,
+               
+#             }
+
+#             return render(request, 'main/details.html', context)
+       
+class DetailsView(View):
     def get(self, request, item_id):
         # Obtener detalles para el Pokémon específico
         pokemon_api = PokemonAPI()
         pokemon_data = pokemon_api.get_pokemon_details_by_id(item_id)
 
         if pokemon_data:
-            # Obtener habilidades y características del Pokémon
-            abilities = pokemon_data.get('abilities', [])
-            characteristics = pokemon_data.get('characteristics', [])
-
+            # Obtener más detalles del Pokémon
+         
+            weight = pokemon_data.get('weight', '')
+            height = pokemon_data.get('height', '')
+            
             context = {
                 'pokemon_data': pokemon_data,
-                'abilities': abilities,
-                'characteristics': characteristics,
+                'sprite': pokemon_data.get('sprites', {}).get('front_default', ''),
+                'weight': weight,
+                'height': height,
             }
 
             return render(request, 'main/details.html', context)
         # else:
         #     # Manejar errores si no se puede obtener detalles
-        #     return render(request, 'consumo_api/error.html', {'error_message': 'Error al obtener detalles del Pokémon'})
+        #     return render(request, 'main/error.html', {'error_message': 'Error al obtener detalles del Pokémon'})

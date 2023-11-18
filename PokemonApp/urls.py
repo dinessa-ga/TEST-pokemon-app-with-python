@@ -8,11 +8,10 @@
 
 # consumo_api/urls.py
 from django.urls import path
-from .views import ListaView, DetalleView
-
+from .views import ListView, DetailsView
 urlpatterns = [
-    path('', ListaView.as_view(), name='index'),
-    path('detalles/<int:item_id>/', DetalleView.as_view(), name='detalle_pokemon'),
+    path('', ListView.as_view(), name='index'),
+    path('pokemon/<int:item_id>', DetailsView.as_view(), name='pokemon'),
 ]
 
 # <int:item_id>/

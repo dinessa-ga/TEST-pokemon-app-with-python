@@ -10,30 +10,18 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% comment %} <link rel="stylesheet" href=""> {% endcomment %}
+        {% load static %}
+        {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"/> {% endcomment %}
     </head>
     <body>
+  
       <div>
-                <!-- main/details.html -->
-        <h1>{{ pokemon_data.name }}</h1>
-
-        <!-- Mostrar habilidades -->
-        <ul>
-            {% for ability in abilities %}
-                <li>{{ ability.name }}</li>
-            {% endfor %}
-        </ul>
-
-        <!-- Mostrar características -->
-        <ul>
-            {% for characteristic in characteristics %}
-                <li>{{ characteristic.name }}</li>
-            {% endfor %}
-        </ul>
-
+        <img src="{{sprite}}" alt="{{name}} sprite">
+        <h2>Detalles del Pokémon {{ pokemon_data.name }}</h2>
+        <p>Weight: {{ weight }}</p>
+        <p>Height: {{ height }}</p>
 
       </div>
-{% comment %}         
-        <script src="" async defer></script> {% endcomment %}
+
     </body>
 </html>

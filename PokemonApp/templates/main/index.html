@@ -19,7 +19,7 @@
                 <img src="{{ pokemon_info.sprite }}" alt="{{ pokemon_info.name }} sprite">
                 <h3>{{ pokemon_info.name }}</h3>
                 <p>Número de habilidades: {{ pokemon_info.abilities_count }}</p>
-                <a href="{{ pokemon_info.url }}">Ver más detalles</a>
+                {% comment %} <a href="{% url 'pokemon' pokemon_info.id %}">Ver más detalles</a> {% endcomment %}
             </li>
         {% endfor %}
     </ul>
