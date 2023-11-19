@@ -91,17 +91,13 @@ class DetailsView(View):
 
             weight = pokemon_data.get('weight', '')
             height = pokemon_data.get('height', '')
-            abilities_group = pokemon_data.get('abilities_group', {})
-            abilities_info = abilities_group.get('ability', {})
-            ability_name = abilities_info.get('name', '')
-            
+                    
             context = {
                 'pokemon_data': pokemon_data,
                 'sprite': pokemon_data.get('sprites', {}).get('front_default', ''),
                 'weight': weight,
                 'height': height,
-                'species': ability_name,  # Usar solo el nombre de la especie
-            }
+           }
 
             return render(request, 'main/details.html', context)
         # else:
