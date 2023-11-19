@@ -9,7 +9,7 @@ ul {
     justify-content: space-around;
 }
 
-li {
+a {
 
     margin: 1rem;
     width: 12rem;
@@ -27,7 +27,12 @@ li {
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    text-decoration: none;
+    color: inherit;
 }
+
+
 
 h3 {
     width: 8rem;

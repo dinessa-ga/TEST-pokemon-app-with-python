@@ -79,27 +79,7 @@ class ListView(View):
         return render(request, 'main/index.html', context)
 
 
-
-# class DetalleView(View):
-#     def get(self, request, item_id):
-#         # Obtener detalles para el Pokémon específico
-#         pokemon_api = PokemonAPI()
-#         pokemon_data = pokemon_api.get_pokemon_details_by_id(item_id)
-
-#         if pokemon_data:
-#             # Obtener más detalles del Pokémon
-#             abilities = pokemon_data.get('abilities', [])
-           
-
-#             context = {
-#                  'sprite': pokemon_data.get('sprites', {}).get('front_default', ''),
-#                 'pokemon_data': pokemon_data,
-#                 'ability': abilities,
-               
-#             }
-
-#             return render(request, 'main/details.html', context)
-       
+    
 class DetailsView(View):
     def get(self, request, item_id):
         # Obtener detalles para el Pokémon específico
@@ -108,15 +88,19 @@ class DetailsView(View):
 
         if pokemon_data:
             # Obtener más detalles del Pokémon
-         
+
             weight = pokemon_data.get('weight', '')
             height = pokemon_data.get('height', '')
+            abilities_group = pokemon_data.get('abilities_group', {})
+            abilities_info = abilities_group.get('ability', {})
+            ability_name = abilities_info.get('name', '')
             
             context = {
                 'pokemon_data': pokemon_data,
                 'sprite': pokemon_data.get('sprites', {}).get('front_default', ''),
                 'weight': weight,
                 'height': height,
+                'species': ability_name,  # Usar solo el nombre de la especie
             }
 
             return render(request, 'main/details.html', context)

@@ -14,12 +14,13 @@
         
     <ul>
         {% for pokemon_info in pokemon_list %}
-            <li style="list-style-type:none">
-                
-                <img src="{{ pokemon_info.sprite }}" alt="{{ pokemon_info.name }} sprite">
-                <h3>{{ pokemon_info.name }}</h3>
-                <p>Número de habilidades: {{ pokemon_info.abilities_count }}</p>
-                <a href="{% url 'pokemon' pokemon_info.id %}">Ver más detalles</a>
+        
+            <li  style="list-style-type:none">
+                <a href="{% url 'pokemon' pokemon_info.id %}">
+                    <img src="{{ pokemon_info.sprite }}" alt="{{ pokemon_info.name }} sprite">
+                    <h3>{{ pokemon_info.name }}</h3>
+                    <p>Número de habilidades: {{ pokemon_info.abilities_count }}</p>
+                </a>
             </li>
         {% endfor %}
     </ul>
