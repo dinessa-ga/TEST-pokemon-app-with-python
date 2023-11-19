@@ -1,12 +1,3 @@
-# from django.urls import path
-# from . import views 
-
-# urlpatterns = [
-#     path('', views.ListaView, name='index')
-# ]
-
-
-# consumo_api/urls.py
 from django.urls import path
 from .views import ListView, DetailsView
 urlpatterns = [
