@@ -27,6 +27,9 @@ Fuera de PokemonApp se incluye la carpeta, static, dentro está el CSS e IMG.
 
 - Desplegar: python manage.py runserver 
 
+A continuación la página de incio de la aplicación:
+
+![Ejemplo de imagen local](captura_pokemon.png)
 
 
 
